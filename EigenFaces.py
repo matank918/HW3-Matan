@@ -14,12 +14,11 @@ plt.rcParams['ytick.labelsize'] = 12
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from IPython.display import display, clear_output
 
 from PIL import Image
 from sklearn.datasets import fetch_lfw_people
 from sklearn.decomposition import PCA
-from additional_function import plot_gallery, plot_eigenfaces
+from additional_function import plot_gallery, plot_eigenfaces, plot_result
 
 
 # Load data
@@ -63,4 +62,5 @@ flattened_img -= mu_orig
 # create U and K
 k=900
 U = eigenvec_mat[1:k+1]
-K = np.inner(U,flattened_img)
+C = np.inner(U,flattened_img)
+plot_result(k,U,mu_orig,C,h,w)
