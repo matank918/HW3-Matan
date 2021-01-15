@@ -62,5 +62,8 @@ flattened_img -= mu_orig
 # create U and K
 k=900
 U = eigenvec_mat[1:k+1]
-C = np.inner(U,flattened_img)
-plot_result(k,U,mu_orig,C,h,w)
+C1 = np.inner(U,flattened_img)
+C2 = np.dot(U,flattened_img)
+# plot_result(k,U,mu_orig,C,h,w)
+
+print(np.allclose(C1,C2, rtol=1e-05, atol=1e-08, equal_nan=False))
